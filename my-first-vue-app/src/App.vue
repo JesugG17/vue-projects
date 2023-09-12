@@ -3,8 +3,7 @@
   import { v4 as uuid } from 'uuid';
   import { Todo } from './types/todo.interface';
  
-  let todos: Ref<Todo[]> = ref([]);
-
+  const todos: Ref<Todo[]> = ref([]);
 
   const handleSubmit = (event: Event) => {
     const target = event.target as HTMLInputElement;
