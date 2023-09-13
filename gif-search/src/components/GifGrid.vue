@@ -10,7 +10,7 @@ const props = defineProps<{
 
 const gifs: Ref<GifApi[]> = ref([]);
 
-async function getData() {
+const getData = async() => {
     const { data } = await gifApi.get(`${props.category}&limit=10`);
     gifs.value = data.data;
 }
