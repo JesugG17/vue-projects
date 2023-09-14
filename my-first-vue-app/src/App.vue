@@ -1,8 +1,11 @@
 <script setup lang="ts">
-  import { ref, Ref, watch, watchEffect } from 'vue';
+  import { ref, Ref } from 'vue';
   import { v4 as uuid } from 'uuid';
   import { Todo } from './types/todo.interface';
 import Modal from './basics/Modal.vue';
+import CustomEvents from './basics/CustomEvents.vue';
+import Layout from './basics/Layout.vue';
+import Button from './basics/Button.vue';
  
   const todos: Ref<Todo[]> = ref([]);
   const modalRef: Ref<InstanceType<typeof Modal> | null> = ref(null);
@@ -36,9 +39,11 @@ import Modal from './basics/Modal.vue';
     }
   }
 
+  const size = ref(1)
+
 </script>
 <template>
-  <section class="w-full h-screen flex flex-col gap-5 justify-center items-center bg-[#242424]">
+  <!-- <section class="w-full h-screen flex flex-col gap-5 justify-center items-center bg-[#242424]">
       <article class="flex gap-3">
           <input 
             class="p-2 rounded"
@@ -65,5 +70,15 @@ import Modal from './basics/Modal.vue';
 
       <Modal ref="modalRef" />
       <button @click="modalRef?.openModal" class="p-2 bg-white">Open modal</button>
-  </section>
+  </section> -->
+  <div :style="{ fontSize: size + 'em'}">
+    <CustomEvents @enlarge-text="size += 1"/>
+  </div>
+  <!-- <Layout>
+
+  </Layout> -->
+  
+  <Button>Click</Button>
+  <Button>Click</Button>
+  <Button>Click</Button>
 </template>
