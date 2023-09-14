@@ -1,9 +1,14 @@
 <script setup lang="ts">
-  import { ref, Ref } from 'vue';
+  import { ref, Ref, watch, watchEffect } from 'vue';
   import { v4 as uuid } from 'uuid';
   import { Todo } from './types/todo.interface';
+import Modal from './basics/Modal.vue';
  
   const todos: Ref<Todo[]> = ref([]);
+  const modalRef: Ref<InstanceType<typeof Modal> | null> = ref(null);
+
+  const inputRef: Ref<HTMLInputElement | null> = ref(null);
+  const textInput = ref('');
 
   const handleSubmit = (event: Event) => {
     const target = event.target as HTMLInputElement;
@@ -23,6 +28,12 @@
 
   const handleDelete = (todoId: string) => {
     todos.value = todos.value.filter(todo => todo.id !== todoId);
+  }
+
+  const focusInput = () => {
+    if (inputRef) {
+      inputRef.value?.focus();
+    }
   }
 
 </script>
@@ -48,5 +59,11 @@
           <button  class="bg-red-500 p-2 rounded-l" @click="handleDelete(todo.id)">Delete</button>
         </li>
       </ul>
+      <input v-model="textInput" type="text" placeholder="Test me">
+      <input ref="inputRef" class="focus:outline-red-500" type="text" placeholder="Focusss">
+      <button @click="focusInput">Click me to focus the input above</button>
+
+      <Modal ref="modalRef" />
+      <button @click="modalRef?.openModal" class="p-2 bg-white">Open modal</button>
   </section>
 </template>
