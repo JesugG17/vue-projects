@@ -6,6 +6,7 @@ import ProductDescription from './components/ProductDescription.vue';
 import Aside from './components/Aside.vue';
 import Cart from './components/Cart.vue';
 import { CartItem } from './types/cart.type';
+import ProductsView from './components/ProductsView.vue';
 
 const isModalOpen = ref(false);
 const isCartOpen = ref(false);
@@ -25,7 +26,6 @@ const toggleCart = () => {
 }
 
 const removeItem = (id: string) => {
-  console.log('hola');
   cartItems.value = cartItems.value.filter( item => item.id !== id);
 }
 
@@ -33,8 +33,11 @@ const removeItem = (id: string) => {
 
 <template>
   <Header :open-modal="openModal" :toggle-cart="toggleCart" />
-  <ProductSlider />
-  <ProductDescription :cart-items="cartItems"/>
+  <section class="md:flex md:mt-10">
+    <ProductSlider class="md:hidden" />
+    <ProductsView />
+    <ProductDescription :cart-items="cartItems"/>
+  </section>
   <Aside :close-modal="closeModal" v-if="isModalOpen" />
   <Cart :cart-items="cartItems" :remove-item="removeItem" v-if="isCartOpen" />
 </template>
