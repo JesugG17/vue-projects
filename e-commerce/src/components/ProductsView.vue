@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import {} from 'vue';
+import { ref, Ref } from 'vue';
+import Carousel from './Carousel.vue';
+import Lighbox from './Lighbox.vue';
+
+// const showLighbox = ref(false);
+const lightBox: Ref<InstanceType<typeof Lighbox> | null> = ref(null);
+
 </script>
 
 <template>
-    <section class="px-6 flex flex-col gap-6">
-        <img class="rounded-md" src="/img/image-product-1.jpg" alt="Product image">
-        <article class="flex justify-between">
-            <img class="w-[20%] rounded-md" src="/img/image-product-1-thumbnail.jpg" alt="Thumbnail">
-            <img class="w-[20%] rounded-md" src="/img/image-product-2-thumbnail.jpg" alt="Thumbnail">
-            <img class="w-[20%] rounded-md" src="/img/image-product-3-thumbnail.jpg" alt="Thumbnail">
-            <img class="w-[20%] rounded-md" src="/img/image-product-4-thumbnail.jpg" alt="Thumbnail">
-        </article>
+    <section class="hidden px-6 md:flex flex-col gap-6 xl:w-[40%]">
+        <img @click="lightBox?.openLightBox" class="rounded-md lg:w-full" src="/img/image-product-1.jpg" alt="Product image">
+        <Carousel />
+        <Lighbox ref="lightBox" />
     </section>
 </template>

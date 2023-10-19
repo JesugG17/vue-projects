@@ -33,7 +33,7 @@ const removeItem = (id: string) => {
 
 <template>
   <Header :open-modal="openModal" :toggle-cart="toggleCart" />
-  <section class="md:flex md:mt-10">
+  <section class="md:flex md:mt-10 xl:w-4/5 xl:justify-center xl:gap-20 xl:m-auto xl:mt-20 max-w-7xl">
     <ProductSlider class="md:hidden" />
     <ProductsView />
     <ProductDescription :cart-items="cartItems"/>

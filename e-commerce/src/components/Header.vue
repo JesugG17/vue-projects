@@ -8,12 +8,12 @@ const props = defineProps<{
 </script>
 
 <template>
-    <nav class="w-full p-4 flex justify-between md:p-0 md:justify-around">
+    <nav class="w-full p-4 flex justify-between md:p-0 md:justify-around md:border-b lg:w-4/5 lg:m-auto">
         <div class="flex gap-4 items-center">
             <img class="md:hidden" @click="props.openModal" src="/img/icon-menu.svg" alt="Icon Menu">
             <img src="/img/logo.svg" alt="Logo">
             <nav class="hidden md:block ml-4">
-                <ul class="flex gap-4 items-center text-gray-400 text-sm">
+                <ul class="flex gap-4 items-center text-gray-400 text-sm lg:text-base">
                     <li class="border-b-4 border-transparent py-6 hover:border-orange">Collections</li>
                     <li class="border-b-4 border-transparent py-6 hover:border-orange">Men</li>
                     <li class="border-b-4 border-transparent py-6 hover:border-orange">Women</li>
