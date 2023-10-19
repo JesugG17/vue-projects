@@ -2,8 +2,11 @@
     
 const props = defineProps<{
     openModal: () => void;
-    toggleCart: () => void;
 }>();
+
+defineEmits([
+    'toggle-cart'
+]);
 
 </script>
 
@@ -23,7 +26,7 @@ const props = defineProps<{
             </nav>
         </div>
         <div class="flex items-center gap-4">
-            <img @click="toggleCart" src="/img/icon-cart.svg" alt="Icon cart">
+            <img @click="$emit('toggle-cart')" src="/img/icon-cart.svg" alt="Icon cart">
             <img class="w-8" src="/img/image-avatar.png" alt="Image avatar">
         </div>
     </nav>

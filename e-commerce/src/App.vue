@@ -8,21 +8,21 @@ import Cart from './components/Cart.vue';
 import { CartItem } from './types/cart.type';
 import ProductsView from './components/ProductsView.vue';
 
-const isModalOpen = ref(false);
-const isCartOpen = ref(false);
+const isAsideOpen = ref(false);
+const cart: Ref<InstanceType<typeof Cart> | null> = ref(null);
 const cartItems: Ref<CartItem[]> = ref([]);
 
+const toggleCart = () => {
+  if (cart?.value?.isCartOpen) return cart.value.closeCart();
+  cart.value?.openCart();
+}
 
 const openModal = () => {
-  isModalOpen.value = true;
+  isAsideOpen.value = true;
 }
 
 const closeModal = () => {
-  isModalOpen.value = false;
-}
-
-const toggleCart = () => {
-  isCartOpen.value = !isCartOpen.value;
+  isAsideOpen.value = false;
 }
 
 const removeItem = (id: string) => {
@@ -32,12 +32,12 @@ const removeItem = (id: string) => {
 </script>
 
 <template>
-  <Header :open-modal="openModal" :toggle-cart="toggleCart" />
+  <Header :open-modal="openModal" @toggle-cart="toggleCart" />
   <section class="md:flex md:mt-10 xl:w-4/5 xl:justify-center xl:gap-20 xl:m-auto xl:mt-20 max-w-7xl">
     <ProductSlider class="md:hidden" />
     <ProductsView />
     <ProductDescription :cart-items="cartItems"/>
   </section>
-  <Aside :close-modal="closeModal" v-if="isModalOpen" />
-  <Cart :cart-items="cartItems" :remove-item="removeItem" v-if="isCartOpen" />
+  <Aside :close-modal="closeModal" v-if="isAsideOpen" />
+  <Cart :cart-items="cartItems" :remove-item="removeItem" ref="cart"/>
 </template>

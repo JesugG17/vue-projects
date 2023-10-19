@@ -38,7 +38,7 @@ const addToCart = () => {
                 <strong>{{ counter }}</strong>
                 <img @click="counter++" src="/img/icon-plus.svg" alt="Icon minus">
             </button>
-            <button @click="addToCart" class="bg-orange font-bold flex items-center justify-center gap-2 p-4 rounded-md text-white shadow-sm shadow-orange md:w-[55%]">
+            <button @click="addToCart" class="bg-orange font-bold flex items-center justify-center gap-2 p-4 rounded-md text-white shadow-sm shadow-orange md:w-[55%] hover:brightness-110 transition-all duration-200">
                 <img class="brightness-0 invert w-4" src="/img/icon-cart.svg" alt="Icon cart">
                 Add to cart
             </button>

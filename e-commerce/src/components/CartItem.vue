@@ -18,7 +18,7 @@ const props = defineProps<{
                 <p>$125.00 x {{ props.cartItem.quantity }} <strong>${{ props.cartItem.quantity * 125 }}</strong></p>
             </div>
         </div>
-        <img @click="() => removeItem(props.cartItem.id)" src="/img/icon-delete.svg" alt="Icon delete">
+        <img class="cursor-pointer hover:brightness-105 transition-all duration-200" @click="() => removeItem(props.cartItem.id)" src="/img/icon-delete.svg" alt="Icon delete">
     </div>        
 
 </template>
