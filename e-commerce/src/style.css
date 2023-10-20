@@ -4,11 +4,11 @@
 @tailwind utilities;
 
 section::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 @layer base {
-  html {
-    font-family: 'Kumbh Sans';
-  }
+    html {
+        font-family: 'Kumbh Sans';
+    }
 }
