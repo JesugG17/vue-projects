@@ -18,6 +18,10 @@ const previousImage = () => {
     productSlide.value = productSlide.value === 0 ? images.length - 1 : productSlide.value - 1;
 }
 
+defineExpose({
+    productSlide
+})
+
 </script>
 
 <template>

@@ -34,7 +34,7 @@ defineExpose({
             </div>
             <div v-if="props.cartItems.length !== 0" class="p-6 flex flex-col gap-4">
                 <CartItem v-for="item in props.cartItems" :cart-item="item" :remove-item="removeItem"/>        
-                <button class="w-full bg-orange text-white font-bold py-4 rounded-md">Checkout</button>
+                <button class="w-full bg-orange text-white font-bold py-4 rounded-md shadow-md shadow-orange">Checkout</button>
             </div>
             <div v-if="props.cartItems.length === 0" class="h-[150px] flex justify-center items-center">
                 <h4 class="text-center self-center font-bold opacity-70">Your cart is empty</h4>

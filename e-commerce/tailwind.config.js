@@ -12,7 +12,8 @@ export default {
         'very-dark-blue': '#1d2025',
         'dark-grayish-blue': '#68707d',
         'light-grayish-blue': '#f7f8fd',
-      }
+      },
+      
     },
   },
   plugins: [],

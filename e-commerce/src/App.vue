@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Ref } from 'vue';
+import { computed, ref, Ref } from 'vue';
 import Header from './components/Header.vue';
 import ProductSlider from './components/ProductSlider.vue';
 import ProductDescription from './components/ProductDescription.vue';
@@ -29,10 +29,15 @@ const removeItem = (id: string) => {
   cartItems.value = cartItems.value.filter( item => item.id !== id);
 }
 
+const totalItems = computed(() => {
+  const quantities = cartItems.value.map( item => item.quantity);
+  return quantities.length !== 0 ? quantities.reduce((acc, current) => acc + current) : 0;
+});
+console.log(totalItems);
 </script>
 
 <template>
-  <Header :open-modal="openModal" @toggle-cart="toggleCart" />
+  <Header :total-items="totalItems" :open-modal="openModal" @toggle-cart="toggleCart" />
   <section class="md:flex md:mt-10 xl:w-4/5 xl:justify-center xl:gap-20 xl:m-auto xl:mt-20 max-w-7xl">
     <ProductSlider class="md:hidden" />
     <ProductsView />
