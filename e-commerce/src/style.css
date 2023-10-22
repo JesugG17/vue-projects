@@ -3,12 +3,25 @@
 @tailwind components;
 @tailwind utilities;
 
-section::-webkit-scrollbar {
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @layer base {
-    html {
-        font-family: 'Kumbh Sans';
-    }
+  html {
+    font-family: 'Kumbh Sans';
+  }
 }
