@@ -4,7 +4,6 @@ import { CartItem as CartItemType } from '../types/cart.type';
 
 const props = defineProps<{
   cartItems: CartItemType[];
-  removeItem: (id: string) => void;
 }>();
 
 const isCartOpen = ref(false);
@@ -34,7 +33,7 @@ defineExpose({
         <h4 class="font-bold">Cart</h4>
       </div>
       <div v-if="props.cartItems.length !== 0" class="p-6 flex flex-col gap-4">
-        <CartItem v-for="item in props.cartItems" :cart-item="item" :remove-item="removeItem" />
+        <CartItem v-for="item in props.cartItems" :cart-item="item" />
         <button
           class="w-full bg-orange text-white font-bold py-4 rounded-md shadow-md shadow-pale-orange hover:brightness-105 transition-all duration-200"
         >

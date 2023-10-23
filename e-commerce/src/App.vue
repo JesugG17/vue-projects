@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, ref, Ref } from 'vue';
+import { computed, provide, ref, Ref } from 'vue';
 import Cart from './components/Cart.vue';
 import { CartItem } from './types/cart.type';
 
 const isAsideOpen = ref(false);
 const cart: Ref<InstanceType<typeof Cart> | null> = ref(null);
 const cartItems: Ref<CartItem[]> = ref([]);
+
+// TODO: Utilizar dependency provider para evitar el prop drilling
+
 
 const toggleCart = () => {
   if (cart?.value?.isCartOpen) return cart.value.closeCart();
@@ -28,6 +31,9 @@ const totalItems = computed(() => {
   const quantities = cartItems.value.map((item) => item.quantity);
   return quantities.length !== 0 ? quantities.reduce((acc, current) => acc + current) : 0;
 });
+
+provide('remove-item', removeItem);
+
 </script>
 
 <template>
@@ -38,5 +44,5 @@ const totalItems = computed(() => {
     <ProductDescription :cart-items="cartItems" />
   </section>
   <Aside :close-modal="closeModal" v-if="isAsideOpen" />
-  <Cart :cart-items="cartItems" :remove-item="removeItem" ref="cart" />
+  <Cart :cart-items="cartItems" ref="cart" />
 </template>

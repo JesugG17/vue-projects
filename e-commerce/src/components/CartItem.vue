@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import {} from 'vue';
+import { inject } from 'vue';
 import { CartItem } from '../types/cart.type';
 
 const props = defineProps<{
   cartItem: CartItem;
-  removeItem: (id: string) => void;
 }>();
+
+const remove = inject<(id: string) => void>('remove-item') as (id: string) => void;
+
 </script>
 
 <template>
@@ -22,7 +24,7 @@ const props = defineProps<{
     </div>
     <img
       class="cursor-pointer hover:brightness-105 transition-all duration-200"
-      @click="() => removeItem(props.cartItem.id)"
+      @click="() => remove(props.cartItem.id)"
       src="/img/icon-delete.svg"
       alt="Icon delete"
     />
