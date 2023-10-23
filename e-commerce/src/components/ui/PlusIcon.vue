@@ -1,4 +1,3 @@
-
 <template>
   <svg
     class="fill-orange hover:brightness-110"

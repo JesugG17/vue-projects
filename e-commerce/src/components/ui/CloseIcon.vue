@@ -1,10 +1,5 @@
-<script setup lang="ts">
-defineEmits(['click']);
-</script>
-
 <template>
   <svg
-    @click="$emit('click')"
     class="fill-white hover:fill-orange self-end scale-125 w-6 cursor-pointer transition-all duration-200"
     width="10"
     height="15"

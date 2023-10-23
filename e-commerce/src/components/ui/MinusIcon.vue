@@ -1,4 +1,3 @@
-
 <template>
   <svg
     class="hover:fill-pale-orange"

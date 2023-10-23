@@ -7,7 +7,6 @@ const props = defineProps<{
 }>();
 
 const remove = inject<(id: string) => void>('remove-item') as (id: string) => void;
-
 </script>
 
 <template>

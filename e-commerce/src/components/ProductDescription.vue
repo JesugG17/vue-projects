@@ -18,12 +18,8 @@ const addToCart = () => {
 
 <template>
   <section class="flex flex-col py-4 px-6 gap-3 lg:mt-10 xl:w-[40%]">
-    <strong class="text-orange font-bold tracking-widest text-xs lg:text-base">
-      SNEAKER COMPANY
-    </strong>
-    <h1 class="text-2xl font-bold md:text-3xl lg:text-5xl">
-      Fall Limited Edition Sneakers
-    </h1>
+    <strong class="text-orange font-bold tracking-widest text-xs lg:text-base"> SNEAKER COMPANY </strong>
+    <h1 class="text-2xl font-bold md:text-3xl lg:text-5xl">Fall Limited Edition Sneakers</h1>
     <p class="text-gray-600 text-sm md:text-base lg:text-lg">
       These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, the'll
       withstand everything the weather can offer

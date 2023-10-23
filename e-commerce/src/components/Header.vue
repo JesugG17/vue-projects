@@ -18,7 +18,10 @@ defineEmits(['toggle-cart']);
       <img src="/img/logo.svg" alt="Logo" />
       <nav class="hidden md:block ml-4">
         <ul class="flex gap-4 items-center text-gray-400 text-sm lg:text-base">
-          <li v-for="text in links" class="border-b-4 border-transparent py-6 hover:border-orange transition-all duration-200">
+          <li
+            v-for="text in links"
+            class="border-b-4 border-transparent py-6 hover:border-orange transition-all duration-200"
+          >
             {{ text }}
           </li>
         </ul>

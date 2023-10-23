@@ -7,9 +7,6 @@ const isAsideOpen = ref(false);
 const cart: Ref<InstanceType<typeof Cart> | null> = ref(null);
 const cartItems: Ref<CartItem[]> = ref([]);
 
-// TODO: Utilizar dependency provider para evitar el prop drilling
-
-
 const toggleCart = () => {
   if (cart?.value?.isCartOpen) return cart.value.closeCart();
   cart.value?.openCart();
@@ -33,7 +30,6 @@ const totalItems = computed(() => {
 });
 
 provide('remove-item', removeItem);
-
 </script>
 
 <template>
