@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import Carousel from './Carousel.vue';
 import Lighbox from './Lighbox.vue';
 
 const lightBox: Ref<InstanceType<typeof Lighbox> | null> = ref(null);

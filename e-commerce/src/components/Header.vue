@@ -24,7 +24,7 @@ defineEmits(['toggle-cart']);
         </ul>
       </nav>
     </div>
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-4 md:gap-7">
       <figure class="relative">
         <img class="lg:w-7 cursor-pointer" @click="$emit('toggle-cart')" src="/img/icon-cart.svg" alt="Icon cart" />
         <span
