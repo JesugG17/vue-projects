@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useTaskStore } from '../store/task.store';
+import { useCloseWindow } from '../composables/useCloseWindow';
+
+
+const taskDesc = ref('');
+const store = useTaskStore;
+const isAddingTask = useCloseWindow()
+
+
+const openView = () => {
+    isAddingTask.value = true;
+}
+
+const onSubmit = () => {
+    if (taskDesc.value.length === 0) return;
+    store.addTask(taskDesc.value);
+    taskDesc.value = '';
+    isAddingTask.value = false;
+}
+
+
+defineExpose({
+    openView
+})
+
+</script>
+
+<template>
+    <section v-if="isAddingTask" class="bg-black bg-opacity-40 w-full h-screen absolute top-0 left-0 flex justify-center items-center">
+        <form @submit.prevent="onSubmit" class="bg-zinc-700 p-4 rounded-md flex flex-col gap-5 text-white w-[75%] max-w-xs">
+            <h4>Add new task</h4>
+            <input v-model="taskDesc" class="text-black" type="text" placeholder="Task description">
+            <button>
+                completed
+            </button>
+        </form>
+    </section>
+</template>
