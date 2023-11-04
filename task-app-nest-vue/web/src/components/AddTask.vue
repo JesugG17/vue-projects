@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { useTaskStore } from '../store/task.store';
 import { useCloseWindow } from '../composables/useCloseWindow';
 
 
 const taskDesc = ref('');
+const inputRef = ref<HTMLElement | null>(null);
 const store = useTaskStore;
 const isAddingTask = useCloseWindow()
 
@@ -20,6 +21,11 @@ const onSubmit = () => {
     isAddingTask.value = false;
 }
 
+watchEffect(() => {
+    if (isAddingTask.value) {
+        inputRef.value?.focus();
+    }
+});
 
 defineExpose({
     openView
@@ -31,7 +37,7 @@ defineExpose({
     <section v-if="isAddingTask" class="bg-black bg-opacity-40 w-full h-screen absolute top-0 left-0 flex justify-center items-center">
         <form @submit.prevent="onSubmit" class="bg-zinc-700 p-4 rounded-md flex flex-col gap-5 text-white w-[75%] max-w-xs">
             <h4>Add new task</h4>
-            <input v-model="taskDesc" class="text-black" type="text" placeholder="Task description">
+            <input v-model="taskDesc" ref="inputRef" class="text-black" type="text" placeholder="Task description">
             <button>
                 completed
             </button>
