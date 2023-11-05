@@ -17,7 +17,6 @@ type Actions = {
     toggleTask: (id: string) => Promise<void>;
 }
 
-
 export const useTaskStore = reactive<State & Actions>({
     tasks: [],
     async addTask(desc: string) {
@@ -29,7 +28,7 @@ export const useTaskStore = reactive<State & Actions>({
         this.tasks.push(newTask);
     },
     async removeTask(id: string) {
-        console.log('removeTask', id);
+        this.tasks = this.tasks.filter(task => task.id !== id);
     },
     async toggleTask(id: string) {
         const index = this.tasks.findIndex(task => task.id === id);
