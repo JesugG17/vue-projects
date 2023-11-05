@@ -7,17 +7,17 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(createTaskDto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.tasksService.findAll();
   }
 
-  @Put(':id')
+  @Put('update/:id')
   update(
     @Param('id') id: string,
     @Body() updateTaskDto: UpdateTaskDto
@@ -25,7 +25,7 @@ export class TasksController {
     return this.tasksService.update(updateTaskDto, id);
   }
 
-  @Delete(':id') 
+  @Delete('delete/:id') 
   delete(@Param('id') id: string) {
     return this.tasksService.delete(id);
   }

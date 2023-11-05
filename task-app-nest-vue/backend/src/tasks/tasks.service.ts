@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Tasks } from './entities/task.entity';
 import { Repository } from 'typeorm';
@@ -14,13 +14,23 @@ export class TasksService {
     ){}
 
     async findAll() {
-        return this.taskRepository.find();
+        const tasks = await this.taskRepository.find();
+        return {
+            data: tasks,
+            message: 'Tasks retrieved successfully!',
+            code: HttpStatus.OK
+        }
     }
 
     async create(createTaskDto: CreateTaskDto) {
         createTaskDto.completed = createTaskDto.completed ?? false;
         const task = this.taskRepository.create(createTaskDto);
-        return await this.taskRepository.save(task);
+        await this.taskRepository.save(task);
+        return {
+            data: null,
+            message: 'Task created successfully',
+            code: HttpStatus.CREATED
+        }
     }
 
     async update(updateTaskDto: UpdateTaskDto, id: string) {
@@ -38,7 +48,8 @@ export class TasksService {
 
         return {
             data: null,
-            message: 'Task updated successfully'
+            message: 'Task updated successfully',
+            code: HttpStatus.OK
         }
     }
 
@@ -49,6 +60,12 @@ export class TasksService {
             throw new BadRequestException(`the task with the id ${ id } doesn´t exists`);
         }
 
-        return await task.remove();
+        await task.remove();
+
+        return {
+            data: null,
+            message: 'Task deleted successfully!',
+            code: HttpStatus.OK
+        }
     }
 }
